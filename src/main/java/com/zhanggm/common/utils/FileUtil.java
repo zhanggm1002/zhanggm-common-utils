@@ -2,7 +2,6 @@ package com.zhanggm.common.utils;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -157,14 +156,5 @@ public class FileUtil {
 	 */
 	public static List<String> readTextFileToList(String pathname){
 		return readTextFileToList(new File(pathname));
-	}
-	
-	public static void main(String[] args) {
-		String systemUserHome = getSystemTempDirectory();
-		System.out.println(systemUserHome);
-		Object len;
-		String format = String.format("String.format测试：%s短短的,%s",1,2);
-		File file = new File("C:\\Users\\Administrator\\Desktop\\pom.xml");
-		System.out.println(readTextFileToList(file));
 	}
 }

@@ -80,6 +80,22 @@ public class StringUtil {
 		return str.matches(regex);
 	}
 	/**
+	 * @Title: isNumber   
+	 * @Description:    
+	 * @param: @param str
+	 * @param: @return      
+	 * @return: boolean      
+	 * @throws
+	 */
+	public static boolean isNumber(String str) {
+		if(isNull(str)) {
+			return false;
+		}
+		str = str.toLowerCase();
+		String regex = "[0-9]+";
+		return str.matches(regex);
+	}
+	/**
 	 * @Title: getRandomChar   
 	 * @Description: 获得随机一个字符   
 	 * @param: @return      
