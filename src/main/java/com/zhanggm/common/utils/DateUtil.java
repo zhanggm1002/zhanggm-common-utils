@@ -11,7 +11,7 @@ import java.util.Random;
  * @Description:日期工具类    
  * @date:   2020年1月3日 上午9:06:21
  */
-public class DataUtil {
+public class DateUtil {
 	public static SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 	public static SimpleDateFormat dateTimeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	/**
@@ -286,12 +286,10 @@ public class DataUtil {
 	 * @throws
 	 */
 	public static Date getRandomDate(Date date1,Date date2) {
-		Long randomLong = date2.getTime()-date1.getTime();
-		Random random = new Random();
-		int intValue = randomLong.intValue();
-		int nextInt = random.nextInt(Math.abs(intValue));
-		long datelong = date1.getTime()+nextInt;
-		return new Date(datelong);
+		Long randomLong = Math.abs(date1.getTime()-date2.getTime());
+		long random = (long) (randomLong*Math.random());
+		long newDateLong = compare(date1, date2)==1?date2.getTime()+random:date1.getTime()+random;
+		return new Date(newDateLong);
 	}
 	
 	
