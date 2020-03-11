@@ -1,9 +1,13 @@
 package com.zhanggm.common.utils;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -97,7 +101,7 @@ public class FileUtil {
 	}
 	/**
 	 * @Title: readTextFile   
-	 * @Description: TODO(这里用一句话描述这个方法的作用)   
+	 * @Description: 读取文件   
 	 * @param: @param file
 	 * @param: @return      
 	 * @return: String      
@@ -112,7 +116,7 @@ public class FileUtil {
 				String readLine = br.readLine();
 				sb.append(readLine);
 				sb.append("\r\n");
-			}while(br.read()!=-1);
+			}while(br.readLine()!=null);
 			
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -121,6 +125,32 @@ public class FileUtil {
 		}
 		return sb.toString();
 	}
+	/**
+	 * 写文件
+	 * @param fileFullName 文件全名
+	 * @param content 文件内容
+	 */
+	public static void writeTextFile(String fileFullName,String content) {
+        File file = new File(fileFullName);
+        FileOutputStream fos = null;
+        OutputStreamWriter osw = null;
+        BufferedWriter bw = null;
+        try {
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+            fos = new FileOutputStream(file);
+            osw = new OutputStreamWriter(fos);
+            bw = new BufferedWriter(osw);
+            bw.write(content);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            StreamUtil.close(fos,osw,bw);
+        }
+    }
 	/**
 	 * @Title: readTextFileToList   
 	 * @Description: 读取文本文件到list   

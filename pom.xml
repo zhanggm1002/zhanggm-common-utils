@@ -6,6 +6,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>zhanggm-common-utils</name>
 	<description>zhanggm-common-utils</description>
+	<packaging>jar</packaging>
 	<properties>
 		<junit-version>4.12</junit-version>
 	</properties>

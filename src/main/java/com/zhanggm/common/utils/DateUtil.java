@@ -294,10 +294,12 @@ public class DateUtil {
 	
 	
 	public static void main(String[] args) {
-		Date date1= parse("2020-01-01 00:00:00", "yyyy-MM-dd HH:mm:ss");
+		Date date1= parse("2020-02-01 00:00:00", "yyyy-MM-dd HH:mm:ss");
 		Date date2 = new Date();
-		Date randomDate = getRandomDate(date1, date2);
-		System.out.println(format(randomDate, "yyyy-MM-dd HH:mm:ss"));
+		for (int i = 0; i < 10; i++) {
+			Date randomDate = getRandomDate(date1, date2);
+			System.out.println(format(randomDate, "yyyy-MM-dd HH:mm:ss"));
+		}
 	}
 
 }
